@@ -27,8 +27,8 @@ public class Main {
 //            System.out.println(passwordEncoder.encode(s));
 //        }
         Main objExcelFile = new Main();
-        String fileName = "mcriap.xlsx";
-        String path = "/home/nurbol/akimat/claim_case/";
+        String fileName = "users.xlsx";
+        String path = "/home/nurbol/akimat/ekibastuz/";
         Workbook workbook = getExcelDocument(fileName, path);
         objExcelFile.processExcelObject(workbook);
     }

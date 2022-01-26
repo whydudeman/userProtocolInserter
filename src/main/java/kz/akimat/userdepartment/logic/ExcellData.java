@@ -34,10 +34,10 @@ public class ExcellData {
         this.position = getStringFromRowByIndex(row.getCell(4));
         this.department = getStringFromRowByIndex(row.getCell(5));
         this.abbreviation = getStringFromRowByIndex(row.getCell(6));
-//        this.grouping = getStringFromRowByIndex(row.getCell(7));
-        this.parentId = getLongValueFromCell(row.getCell(7));
+        this.grouping = getStringFromRowByIndex(row.getCell(7));
+        this.parentId = getLongValueFromCell(row.getCell(8));
 
-        String roles = getStringFromRowByIndex(row.getCell(8));
+        String roles = getStringFromRowByIndex(row.getCell(9));
 
         if (roles != null && !roles.isEmpty()) {
             this.roles = new ArrayList<>(Arrays.asList(roles.trim().split(",")));
@@ -52,7 +52,7 @@ public class ExcellData {
     private String getStringFromRowByIndex(Cell cell) {
         if (cell != null)
             if (cell.getCellType().equals(CellType.STRING)) {
-                if (cell.getStringCellValue().trim().startsWith("null") || cell.getStringCellValue().trim().isEmpty())
+                if (cell.getStringCellValue().trim().toLowerCase().startsWith("null") || cell.getStringCellValue().trim().isEmpty())
                     return null;
                 return cell.getStringCellValue().trim();
             }
@@ -62,7 +62,7 @@ public class ExcellData {
     private Long getLongValueFromCell(Cell cell) {
         if (cell != null) {
             if (cell.getCellType().equals(CellType.STRING)) {
-                if (cell.getStringCellValue().trim().startsWith("null") || cell.getStringCellValue().isEmpty())
+                if (cell.getStringCellValue().toLowerCase().trim().startsWith("null") || cell.getStringCellValue().isEmpty())
                     return null;
                 return Long.valueOf(cell.getStringCellValue());
             }
